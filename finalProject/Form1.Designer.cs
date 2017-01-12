@@ -39,31 +39,36 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("DejaVu Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.Red;
             this.titleLabel.Location = new System.Drawing.Point(12, 9);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(238, 41);
+            this.titleLabel.Size = new System.Drawing.Size(213, 39);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Sun On Yee";
             // 
             // subtitleLabel
             // 
             this.subtitleLabel.AutoSize = true;
-            this.subtitleLabel.Font = new System.Drawing.Font("DejaVu Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subtitleLabel.Location = new System.Drawing.Point(238, 21);
+            this.subtitleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.subtitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subtitleLabel.ForeColor = System.Drawing.Color.White;
+            this.subtitleLabel.Location = new System.Drawing.Point(221, 19);
             this.subtitleLabel.Name = "subtitleLabel";
-            this.subtitleLabel.Size = new System.Drawing.Size(109, 29);
+            this.subtitleLabel.Size = new System.Drawing.Size(113, 29);
             this.subtitleLabel.TabIndex = 1;
             this.subtitleLabel.Text = "太陽在怡";
             // 
             // startGame
             // 
             this.startGame.BackColor = System.Drawing.Color.Red;
-            this.startGame.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.startGame.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.startGame.FlatAppearance.BorderSize = 2;
             this.startGame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
             this.startGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startGame.Font = new System.Drawing.Font("Prestige Elite Std", 15.25F, System.Drawing.FontStyle.Bold);
+            this.startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Bold);
+            this.startGame.ForeColor = System.Drawing.Color.White;
             this.startGame.Location = new System.Drawing.Point(217, 232);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(233, 46);
@@ -82,10 +87,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(670, 454);
+            this.BackgroundImage = global::finalProject.Properties.Resources.background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(701, 461);
             this.Controls.Add(this.startGame);
             this.Controls.Add(this.subtitleLabel);
             this.Controls.Add(this.titleLabel);
+            this.Cursor = System.Windows.Forms.Cursors.Cross;
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "sunOnYee";
