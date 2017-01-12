@@ -19,6 +19,7 @@ namespace finalProject
         int yVillain;
         int inventory = 0;
         int screenCounter = 0;
+        //Delete
         Boolean leftArrowDown, downArrowDown, rightArrowDown, upArrowDown;
         public sunOnYee()
         {
