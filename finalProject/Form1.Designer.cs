@@ -69,7 +69,7 @@
             this.startGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Bold);
             this.startGame.ForeColor = System.Drawing.Color.White;
-            this.startGame.Location = new System.Drawing.Point(217, 232);
+            this.startGame.Location = new System.Drawing.Point(260, 334);
             this.startGame.Name = "startGame";
             this.startGame.Size = new System.Drawing.Size(233, 46);
             this.startGame.TabIndex = 2;
@@ -89,11 +89,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::finalProject.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(701, 461);
+            this.ClientSize = new System.Drawing.Size(734, 606);
             this.Controls.Add(this.startGame);
             this.Controls.Add(this.subtitleLabel);
             this.Controls.Add(this.titleLabel);
-            this.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "sunOnYee";
