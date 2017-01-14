@@ -12,13 +12,13 @@ namespace finalProject
 {
     public partial class sunOnYee : Form
     {
-        int xHero = 100;
-        int yHero = 100;
-        int speedHero = 4;
+        int xHero = 500;
+        int yHero = 74;
+        int speedHero = 5;
         int xVillain;
         int yVillain;
         int inventory = 0;
-        int screenCounter = 0;
+        int screenCounter = 1;
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown;
         Boolean gameOn = false;
         public sunOnYee()
@@ -98,6 +98,13 @@ namespace finalProject
                 yHero = yHero - speedHero;
             }
 
+            if (yHero == this.Height)
+            {
+                screenCounter++;
+                yHero = 10;
+                Refresh();
+            }
+
             //Draw the screen
             Refresh();
         }
@@ -106,10 +113,19 @@ namespace finalProject
         {
             if (gameOn)
             {
-                e.Graphics.Clear(Color.Black);
-                e.Graphics.DrawImage(Properties.Resources.background1,0,0,);
-                e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, 25, 25);
-                
+                if (screenCounter == 1)
+                {
+                    e.Graphics.Clear(Color.Black);
+                    e.Graphics.DrawImage(Properties.Resources.screen1, 0, 0, 750, 600);
+                    e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, 30, 30);
+                    e.Graphics.DrawImage(Properties.Resources.npcCharacter, 467, 246, 35, 35);
+                    e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, 35, 35);
+                    e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, 35, 35);
+                }
+                else if (screenCounter == 2)
+                {
+                    e.Graphics.Clear(Color.Red);
+                }
             }
         }
 

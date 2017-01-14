@@ -73,9 +73,9 @@ namespace finalProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap background1 {
+        internal static System.Drawing.Bitmap npcCharacter {
             get {
-                object obj = ResourceManager.GetObject("background1", resourceCulture);
+                object obj = ResourceManager.GetObject("npcCharacter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +86,16 @@ namespace finalProject.Properties {
         internal static System.Drawing.Bitmap playerCharacter {
             get {
                 object obj = ResourceManager.GetObject("playerCharacter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap screen1 {
+            get {
+                object obj = ResourceManager.GetObject("screen1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
