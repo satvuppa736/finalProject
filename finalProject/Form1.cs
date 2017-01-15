@@ -69,7 +69,7 @@ namespace finalProject
                     dKeyDown = true;
                     break;
                 case Keys.W:
-                     wKeyDown= true;
+                    wKeyDown = true;
                     break;
                 default:
                     break;
@@ -80,7 +80,7 @@ namespace finalProject
         {
             if (aKeyDown == true)
             {
-               xHero = xHero - speedHero;
+                xHero = xHero - speedHero;
             }
 
             if (sKeyDown == true)
@@ -98,7 +98,7 @@ namespace finalProject
                 yHero = yHero - speedHero;
             }
 
-            if (yHero == this.Height)
+            if (yHero == this.Height && screenCounter == 1)
             {
                 screenCounter++;
                 yHero = 10;
@@ -113,21 +113,25 @@ namespace finalProject
         {
             if (gameOn)
             {
-                if (screenCounter == 1)
+                switch (screenCounter)
                 {
-                    e.Graphics.Clear(Color.Black);
-                    e.Graphics.DrawImage(Properties.Resources.screen1, 0, 0, 750, 600);
-                    e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, 30, 30);
-                    e.Graphics.DrawImage(Properties.Resources.npcCharacter, 467, 246, 35, 35);
-                    e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, 35, 35);
-                    e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, 35, 35);
-                }
-                else if (screenCounter == 2)
-                {
-                    e.Graphics.Clear(Color.Red);
+                    case 1:
+                        e.Graphics.Clear(Color.Black);
+                        e.Graphics.DrawImage(Properties.Resources.screen1, 0, 0, 750, 600);
+                        e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, 30, 30);
+                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 467, 246, 35, 35);
+                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, 35, 35);
+                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, 35, 35);
+                        break;
+                    case 2:
+                        e.Graphics.Clear(Color.Black);
+                        break;
+                    default:
+                        break;
+
                 }
             }
-        }
 
+        }
     }
 }
