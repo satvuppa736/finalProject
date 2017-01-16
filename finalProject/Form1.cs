@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Media;
 
 namespace finalProject
 {
@@ -15,12 +17,16 @@ namespace finalProject
         int xHero = 500;
         int yHero = 74;
         int speedHero = 5;
-        int xVillain;
-        int yVillain;
-        int inventory = 0;
-        int screenCounter = 1;
+        int sizeHero = 30;
+        int screenCounter = 0;
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown;
         Boolean gameOn = false;
+
+        Rectangle cafDoor = new Rectangle(614, 585, 50, 20);
+
+        //room 1 walls
+        Rectangle bedRec = new Rectangle(420, 30, 45, 90);
+
         public sunOnYee()
         {
             InitializeComponent();
@@ -78,6 +84,9 @@ namespace finalProject
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            int xTemp = xHero;
+            int yTemp = yHero;
+
             if (aKeyDown == true)
             {
                 xHero = xHero - speedHero;
@@ -98,11 +107,18 @@ namespace finalProject
                 yHero = yHero - speedHero;
             }
 
-            if (yHero == this.Height && screenCounter == 1)
+            Rectangle heroRec = new Rectangle(xHero, yHero, 30, 30);
+
+            if (heroRec.IntersectsWith(bedRec))
+            {
+                xHero = xTemp;
+                yHero = yTemp;
+            }
+
+            if (cafDoor.IntersectsWith(heroRec))
             {
                 screenCounter++;
                 yHero = 10;
-                Refresh();
             }
 
             //Draw the screen
@@ -113,12 +129,13 @@ namespace finalProject
         {
             if (gameOn)
             {
+
                 switch (screenCounter)
                 {
                     case 1:
                         e.Graphics.Clear(Color.Black);
                         e.Graphics.DrawImage(Properties.Resources.screen1, 0, 0, 750, 600);
-                        e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, 30, 30);
+
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 467, 246, 35, 35);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, 35, 35);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, 35, 35);
@@ -130,6 +147,7 @@ namespace finalProject
                         break;
 
                 }
+                e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
             }
 
         }
