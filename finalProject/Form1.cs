@@ -18,14 +18,20 @@ namespace finalProject
         int yHero = 74;
         int speedHero = 5;
         int sizeHero = 30;
-        int screenCounter = 0;
+        int screenCounter = 1;
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown;
         Boolean gameOn = false;
 
+        //room 1 doors
         Rectangle cafDoor = new Rectangle(614, 585, 50, 20);
 
         //room 1 walls
         Rectangle bedRec = new Rectangle(420, 30, 45, 90);
+        Rectangle cellRec1 = new Rectangle(405, 180, 207, 14);
+        Rectangle cellRec2 = new Rectangle(539,180, 16, 419);
+        Rectangle cellRec3 = new Rectangle(660, 180, 89, 14);
+        Rectangle cellRec4 = new Rectangle(404, 0, 15, 196);
+        Rectangle cellRec5 = new Rectangle(404, 0, 345, 25);
 
         public sunOnYee()
         {
@@ -109,7 +115,7 @@ namespace finalProject
 
             Rectangle heroRec = new Rectangle(xHero, yHero, 30, 30);
 
-            if (heroRec.IntersectsWith(bedRec))
+            if (heroRec.IntersectsWith(bedRec) || heroRec.IntersectsWith(cellRec1) || heroRec.IntersectsWith(cellRec2) || heroRec.IntersectsWith(cellRec3) || heroRec.IntersectsWith(cellRec4) || heroRec.IntersectsWith(cellRec5))
             {
                 xHero = xTemp;
                 yHero = yTemp;
