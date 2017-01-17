@@ -71,11 +71,30 @@ namespace finalProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Game_Theme {
+            get {
+                return ResourceManager.GetStream("Game_Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap npcCharacter {
             get {
                 object obj = ResourceManager.GetObject("npcCharacter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap npcFlipped {
+            get {
+                object obj = ResourceManager.GetObject("npcFlipped", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -55,7 +55,7 @@
             this.subtitleLabel.BackColor = System.Drawing.Color.Transparent;
             this.subtitleLabel.Font = new System.Drawing.Font("Modern No. 20", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subtitleLabel.ForeColor = System.Drawing.Color.White;
-            this.subtitleLabel.Location = new System.Drawing.Point(225, 16);
+            this.subtitleLabel.Location = new System.Drawing.Point(210, 28);
             this.subtitleLabel.Name = "subtitleLabel";
             this.subtitleLabel.Size = new System.Drawing.Size(109, 29);
             this.subtitleLabel.TabIndex = 1;
@@ -68,13 +68,13 @@
             this.startGame.FlatAppearance.BorderSize = 2;
             this.startGame.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Cyan;
             this.startGame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.startGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Bold);
+            this.startGame.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startGame.ForeColor = System.Drawing.Color.White;
-            this.startGame.Location = new System.Drawing.Point(260, 334);
+            this.startGame.Location = new System.Drawing.Point(266, 450);
             this.startGame.Name = "startGame";
-            this.startGame.Size = new System.Drawing.Size(233, 46);
+            this.startGame.Size = new System.Drawing.Size(233, 42);
             this.startGame.TabIndex = 2;
-            this.startGame.Text = "Click To Start";
+            this.startGame.Text = "Press Space To Start";
             this.startGame.UseVisualStyleBackColor = false;
             this.startGame.Click += new System.EventHandler(this.startGame_Click);
             // 
@@ -87,11 +87,11 @@
             // 
             this.instructionsLabel.AutoSize = true;
             this.instructionsLabel.BackColor = System.Drawing.Color.Transparent;
-            this.instructionsLabel.Font = new System.Drawing.Font("Modern No. 20", 27.75F, System.Drawing.FontStyle.Bold);
+            this.instructionsLabel.Font = new System.Drawing.Font("Modern No. 20", 18F, System.Drawing.FontStyle.Bold);
             this.instructionsLabel.ForeColor = System.Drawing.Color.White;
-            this.instructionsLabel.Location = new System.Drawing.Point(456, 558);
+            this.instructionsLabel.Location = new System.Drawing.Point(559, 9);
             this.instructionsLabel.Name = "instructionsLabel";
-            this.instructionsLabel.Size = new System.Drawing.Size(263, 38);
+            this.instructionsLabel.Size = new System.Drawing.Size(175, 25);
             this.instructionsLabel.TabIndex = 3;
             this.instructionsLabel.Text = "WASD to move";
             // 
@@ -109,8 +109,10 @@
             this.Controls.Add(this.titleLabel);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "sunOnYee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sun On Yee";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.sunOnYee_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sunOnYee_KeyDown);

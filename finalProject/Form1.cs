@@ -16,14 +16,15 @@ namespace finalProject
     {
         int xHero = 500;
         int yHero = 74;
-        int speedHero = 7;
+        int speedHero = 6;
         int sizeHero = 30;
+        int sizeNPC = 35;
         int screenCounter = 1;
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown;
         Boolean gameOn = false;
 
         //room 1 doors
-        Rectangle cafDoor = new Rectangle(616, 585, 43, 14);
+        Rectangle cellDoor = new Rectangle(616, 585, 43, 14);
 
         //room 1 walls
         Rectangle bedRec = new Rectangle(420, 30, 45, 90);
@@ -35,6 +36,9 @@ namespace finalProject
         Rectangle cellRec6 = new Rectangle(721,0,30,600);
         Rectangle cellRec7 = new Rectangle(660, 585, 110, 14);
         Rectangle cellRec8 = new Rectangle(555,585,60,15);
+
+        //room 2 doors
+        Rectangle cafDoor = new Rectangle(584, 0, 91, 14);
 
         public sunOnYee()
         {
@@ -126,10 +130,20 @@ namespace finalProject
                     yHero = yTemp;
                 }
 
-                if (cafDoor.IntersectsWith(heroRec))
+                if (cellDoor.IntersectsWith(heroRec))
                 {
                     screenCounter++;
                     yHero = 15;
+                }
+            }
+
+            if (screenCounter == 2)
+            {
+                if (cafDoor.IntersectsWith(heroRec))
+                {
+                    screenCounter--;
+                    yHero = 544;
+                    xHero = 617;
                 }
             }
 
@@ -147,13 +161,15 @@ namespace finalProject
                     case 1:
                         e.Graphics.Clear(Color.Black);
                         e.Graphics.DrawImage(Properties.Resources.screen1, 0, 0, 750, 600);
-                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 467, 246, 35, 35);
-                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, 35, 35);
-                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, 35, 35);
+                        e.Graphics.DrawImage(Properties.Resources.npcFlipped, 467, 246, sizeNPC, sizeNPC);
+                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, sizeNPC, sizeNPC);
+                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, sizeNPC, sizeNPC);
                         break;
                     case 2:
                         e.Graphics.Clear(Color.Black);
                         e.Graphics.DrawImage(Properties.Resources.screen2, 0, 0, 720, 590);
+                        e.Graphics.DrawImage(Properties.Resources.npcCharacter, 417, 115, sizeNPC, sizeNPC);
+                        e.Graphics.DrawImage(Properties.Resources.npcFlipped, 504, 118, sizeNPC, sizeNPC);
                         break;
                     default:
                         break;
