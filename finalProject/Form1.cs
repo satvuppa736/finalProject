@@ -16,7 +16,7 @@ namespace finalProject
     {
         int xHero = 500;
         int yHero = 74;
-        int speedHero = 6;
+        int speedHero = 10;
         int sizeHero = 30;
         int sizeNPC = 35;
         int screenCounter = 1;
@@ -26,7 +26,7 @@ namespace finalProject
         //room 1 doors
         Rectangle cellDoor = new Rectangle(616, 585, 43, 14);
 
-        //room 1 walls
+        #region room 1 walls
         Rectangle bedRec = new Rectangle(420, 30, 45, 90);
         Rectangle cellRec1 = new Rectangle(405, 180, 206, 14);
         Rectangle cellRec2 = new Rectangle(539,180, 16, 419);
@@ -36,9 +36,18 @@ namespace finalProject
         Rectangle cellRec6 = new Rectangle(721,0,30,600);
         Rectangle cellRec7 = new Rectangle(660, 585, 110, 14);
         Rectangle cellRec8 = new Rectangle(555,585,60,15);
+        #endregion
 
         //room 2 doors
-        Rectangle cafDoor = new Rectangle(584, 0, 91, 14);
+        Rectangle cafDoor = new Rectangle(584, 0, 91, 12);
+
+        //room 2 walls
+        Rectangle cafRec1 = new Rectangle(674, 0, 46, 12);
+        Rectangle cafRec2 = new Rectangle(710, 0, 15, 629);
+        Rectangle cafRec3 = new Rectangle(0, 578, 719, 15);
+        Rectangle cafRec4 = new Rectangle(1, 312, 10, 299);
+        Rectangle cafRec5 = new Rectangle(0, 0, 11, 83);
+        Rectangle cafRec6 = new Rectangle(0, 0, 580, 14);
 
         public sunOnYee()
         {
@@ -101,6 +110,7 @@ namespace finalProject
             int xTemp = xHero;
             int yTemp = yHero;
 
+            #region MOVEMENTS
             if (aKeyDown == true)
             {
                 xHero = xHero - speedHero;
@@ -120,8 +130,11 @@ namespace finalProject
             {
                 yHero = yHero - speedHero;
             }
+            #endregion
 
             Rectangle heroRec = new Rectangle(xHero, yHero, 30, 30);
+
+            #region COLLISION ROOM 1
             if (screenCounter == 1)
             {
                 if (heroRec.IntersectsWith(bedRec) || heroRec.IntersectsWith(cellRec1) || heroRec.IntersectsWith(cellRec2) || heroRec.IntersectsWith(cellRec3) || heroRec.IntersectsWith(cellRec4) || heroRec.IntersectsWith(cellRec5) || heroRec.IntersectsWith(cellRec6) || heroRec.IntersectsWith(cellRec7))
@@ -136,9 +149,17 @@ namespace finalProject
                     yHero = 15;
                 }
             }
+            #endregion
 
-            if (screenCounter == 2)
+            #region COLLISION ROOM 2
+            else if (screenCounter == 2)
             {
+                if (heroRec.IntersectsWith(cafRec1) || heroRec.IntersectsWith(cafRec2) || heroRec.IntersectsWith(cafRec3) || heroRec.IntersectsWith(cafRec4) || heroRec.IntersectsWith(cafRec5) || heroRec.IntersectsWith(cafRec6))
+                {
+                    xHero = xTemp;
+                    yHero = yTemp;
+                }
+
                 if (cafDoor.IntersectsWith(heroRec))
                 {
                     screenCounter--;
@@ -146,6 +167,8 @@ namespace finalProject
                     xHero = 617;
                 }
             }
+
+            #endregion
 
             //Draw the screen
             Refresh();
