@@ -23,6 +23,9 @@ namespace finalProject
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown;
         Boolean gameOn = false;
 
+        SoundPlayer themePlayer = new SoundPlayer(Properties.Resources.themeSong);
+        SoundPlayer gongSound = new SoundPlayer(Properties.Resources.gong);
+
         //room 1 doors
         Rectangle cellDoor = new Rectangle(616, 585, 43, 14);
 
@@ -52,6 +55,7 @@ namespace finalProject
         public sunOnYee()
         {
             InitializeComponent();
+            themePlayer.PlayLooping();
         }
 
         private void startGame_Click(object sender, EventArgs e)
@@ -62,6 +66,10 @@ namespace finalProject
             subtitleLabel.Visible = false;
             startGame.Visible = false;
             instructionsLabel.Visible = false;
+            themePlayer.Stop();
+            gongSound.Play();
+            Thread.Sleep(3500);
+            gongSound.Stop();
             this.Focus();
         }
         private void sunOnYee_KeyUp(object sender, KeyEventArgs e)
