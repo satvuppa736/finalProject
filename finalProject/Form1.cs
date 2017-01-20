@@ -16,11 +16,13 @@ namespace finalProject
     {
         int xHero = 500;
         int yHero = 74;
-        int speedHero = 10;
+        int speedHero = 7;
         int sizeHero = 30;
         int sizeNPC = 35;
         int screenCounter = 1;
-        Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown;
+        int dialogue;
+        Random dialogueGen = new Random();
+        Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown, spaceDown;
         Boolean gameOn = false;
 
         SoundPlayer themePlayer = new SoundPlayer(Properties.Resources.themeSong);
@@ -51,6 +53,10 @@ namespace finalProject
         Rectangle cafRec4 = new Rectangle(1, 312, 10, 299);
         Rectangle cafRec5 = new Rectangle(0, 0, 11, 83);
         Rectangle cafRec6 = new Rectangle(0, 0, 580, 14);
+
+        Rectangle tableRec = new Rectangle(90, 104, 399, 145);
+
+        Rectangle npcRec = new Rectangle(504, 118, 45, 45);
 
         public sunOnYee()
         {
@@ -88,6 +94,9 @@ namespace finalProject
                 case Keys.W:
                     wKeyDown = false;
                     break;
+                case Keys.Space:
+                    spaceDown = false;
+                    break;
                 default:
                     break;
             }
@@ -107,6 +116,9 @@ namespace finalProject
                     break;
                 case Keys.W:
                     wKeyDown = true;
+                    break;
+                case Keys.Space:
+                    spaceDown = true;
                     break;
                 default:
                     break;
@@ -162,7 +174,7 @@ namespace finalProject
             #region COLLISION ROOM 2
             else if (screenCounter == 2)
             {
-                if (heroRec.IntersectsWith(cafRec1) || heroRec.IntersectsWith(cafRec2) || heroRec.IntersectsWith(cafRec3) || heroRec.IntersectsWith(cafRec4) || heroRec.IntersectsWith(cafRec5) || heroRec.IntersectsWith(cafRec6))
+                if (heroRec.IntersectsWith(cafRec1) || heroRec.IntersectsWith(cafRec2) || heroRec.IntersectsWith(cafRec3) || heroRec.IntersectsWith(cafRec4) || heroRec.IntersectsWith(cafRec5) || heroRec.IntersectsWith(cafRec6) || heroRec.IntersectsWith(tableRec))
                 {
                     xHero = xTemp;
                     yHero = yTemp;
@@ -173,6 +185,11 @@ namespace finalProject
                     screenCounter--;
                     yHero = 544;
                     xHero = 617;
+                }
+
+                if (heroRec.IntersectsWith(npcRec) && spaceDown == true)
+                {
+                    dialogue = dialogueGen.Next(1,5);
                 }
             }
 
@@ -186,7 +203,6 @@ namespace finalProject
         {
             if (gameOn)
             {
-
                 switch (screenCounter)
                 {
                     case 1:
@@ -207,7 +223,6 @@ namespace finalProject
                 }
                 e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
             }
-
         }
     }
 }
