@@ -230,7 +230,7 @@ namespace finalProject
                         Thread.Sleep(2000);
                         outputLabel.Text = "Harry: I'm a what?";
                         Thread.Sleep(2000);
-                        outputLabel.Text = "";
+                        outputLabel.Text = "fgfd";
                         break;
                     case 2:
                         outputLabel.Text = "Dave the NPC: I have nothing to say, go away";
