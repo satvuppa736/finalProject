@@ -35,6 +35,7 @@
             this.startGame = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.instructionsLabel = new System.Windows.Forms.Label();
+            this.outputLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -95,6 +96,17 @@
             this.instructionsLabel.TabIndex = 3;
             this.instructionsLabel.Text = "WASD to move\r\nSPACE to interact\r\n";
             // 
+            // outputLabel
+            // 
+            this.outputLabel.BackColor = System.Drawing.Color.Transparent;
+            this.outputLabel.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputLabel.ForeColor = System.Drawing.Color.SteelBlue;
+            this.outputLabel.Location = new System.Drawing.Point(12, 600);
+            this.outputLabel.Name = "outputLabel";
+            this.outputLabel.Size = new System.Drawing.Size(341, 56);
+            this.outputLabel.TabIndex = 4;
+            this.outputLabel.Text = "outputLabel";
+            // 
             // sunOnYee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -103,6 +115,7 @@
             this.BackgroundImage = global::finalProject.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(786, 665);
+            this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.subtitleLabel);
             this.Controls.Add(this.instructionsLabel);
             this.Controls.Add(this.startGame);
@@ -129,6 +142,7 @@
         private System.Windows.Forms.Button startGame;
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label instructionsLabel;
+        private System.Windows.Forms.Label outputLabel;
     }
 }
 

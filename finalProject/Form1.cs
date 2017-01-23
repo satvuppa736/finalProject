@@ -16,7 +16,7 @@ namespace finalProject
     {
         int xHero = 500;
         int yHero = 74;
-        int speedHero = 7;
+        int speedHero = 15;
         int sizeHero = 30;
         int sizeNPC = 35;
         int screenCounter = 1;
@@ -189,7 +189,7 @@ namespace finalProject
 
                 if (heroRec.IntersectsWith(npcRec) && spaceDown == true)
                 {
-                    dialogue = dialogueGen.Next(1,5);
+                    dialogue = dialogueGen.Next(1,6);
                 }
             }
 
@@ -217,8 +217,35 @@ namespace finalProject
                         e.Graphics.DrawImage(Properties.Resources.screen2, 0, 0, 720, 590);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 417, 115, sizeNPC, sizeNPC);
                         e.Graphics.DrawImage(Properties.Resources.npcFlipped, 504, 118, sizeNPC, sizeNPC);
+                        outputLabel.Text = "Walk over to that strange man and press SPACE.";
                         break;
                     default:
+                        break;
+                }
+
+                switch (dialogue)
+                {
+                    case 1:
+                        outputLabel.Text = "Hagrad: You're a Wizard Harry";
+                        Thread.Sleep(2000);
+                        outputLabel.Text = "Harry: I'm a what?";
+                        Thread.Sleep(2000);
+                        outputLabel.Text = "";
+                        break;
+                    case 2:
+                        outputLabel.Text = "Dave the NPC: I have nothing to say, go away";
+                        break;
+                    case 3:
+                        outputLabel.Text = "Dave the NPC: I solve practical problems";
+                        break;
+                    case 4:
+                        outputLabel.Text = "Dave the NPC: JHVSDFBHSKLVBLGFVSHVF";
+                        break;
+                    case 5:
+                        outputLabel.Text = "Dave the NPC: NO WAY IN, NO WAY OUT, NO WAY IN, NO WAY OUT";
+                        break;
+                    default:
+                        outputLabel.Text = "";
                         break;
                 }
                 e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
