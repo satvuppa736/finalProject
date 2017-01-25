@@ -19,19 +19,15 @@ namespace finalProject
         int speedHero = 15;
         int sizeHero = 30;
         int sizeNPC = 35;
-        int screenCounter = 1;
+        int screenCounter = 2;
         int dialogue;
         Random dialogueGen = new Random();
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown, spaceDown;
         Boolean gameOn = false;
 
-        SoundPlayer themePlayer = new SoundPlayer(Properties.Resources.themeSong);
-        SoundPlayer gongSound = new SoundPlayer(Properties.Resources.gong);
-
-        //room 1 doors
+        #region room 1 walls & doors
         Rectangle cellDoor = new Rectangle(616, 585, 43, 14);
 
-        #region room 1 walls
         Rectangle bedRec = new Rectangle(420, 30, 45, 90);
         Rectangle cellRec1 = new Rectangle(405, 180, 206, 14);
         Rectangle cellRec2 = new Rectangle(539,180, 16, 419);
@@ -43,7 +39,7 @@ namespace finalProject
         Rectangle cellRec8 = new Rectangle(555,585,60,15);
         #endregion
 
-        //room 2 doors
+        #region room 2 doors and walls 
         Rectangle cafDoor = new Rectangle(584, 0, 91, 12);
 
         //room 2 walls
@@ -55,13 +51,14 @@ namespace finalProject
         Rectangle cafRec6 = new Rectangle(0, 0, 580, 14);
 
         Rectangle tableRec = new Rectangle(90, 104, 399, 145);
+        Rectangle counterRec = new Rectangle(0, 372, 515, 28);
 
         Rectangle npcRec = new Rectangle(504, 118, 45, 45);
+        #endregion
 
         public sunOnYee()
         {
             InitializeComponent();
-            themePlayer.PlayLooping();
         }
 
         private void startGame_Click(object sender, EventArgs e)
@@ -72,10 +69,6 @@ namespace finalProject
             subtitleLabel.Visible = false;
             startGame.Visible = false;
             instructionsLabel.Visible = false;
-            themePlayer.Stop();
-            gongSound.Play();
-            Thread.Sleep(3500);
-            gongSound.Stop();
             this.Focus();
         }
         private void sunOnYee_KeyUp(object sender, KeyEventArgs e)
@@ -127,10 +120,11 @@ namespace finalProject
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            
+            #region MOVEMENTS
             int xTemp = xHero;
             int yTemp = yHero;
 
-            #region MOVEMENTS
             if (aKeyDown == true)
             {
                 xHero = xHero - speedHero;
@@ -150,9 +144,9 @@ namespace finalProject
             {
                 yHero = yHero - speedHero;
             }
-            #endregion
 
             Rectangle heroRec = new Rectangle(xHero, yHero, 30, 30);
+            #endregion
 
             #region COLLISION ROOM 1
             if (screenCounter == 1)
@@ -174,7 +168,7 @@ namespace finalProject
             #region COLLISION ROOM 2
             else if (screenCounter == 2)
             {
-                if (heroRec.IntersectsWith(cafRec1) || heroRec.IntersectsWith(cafRec2) || heroRec.IntersectsWith(cafRec3) || heroRec.IntersectsWith(cafRec4) || heroRec.IntersectsWith(cafRec5) || heroRec.IntersectsWith(cafRec6) || heroRec.IntersectsWith(tableRec))
+                if (heroRec.IntersectsWith(cafRec1) || heroRec.IntersectsWith(cafRec2) || heroRec.IntersectsWith(cafRec3) || heroRec.IntersectsWith(cafRec4) || heroRec.IntersectsWith(cafRec5) || heroRec.IntersectsWith(cafRec6) || heroRec.IntersectsWith(tableRec) || heroRec.IntersectsWith(counterRec))
                 {
                     xHero = xTemp;
                     yHero = yTemp;
@@ -189,7 +183,7 @@ namespace finalProject
 
                 if (heroRec.IntersectsWith(npcRec) && spaceDown == true)
                 {
-                    dialogue = dialogueGen.Next(1,6);
+                    dialogue = dialogueGen.Next(1, 6);
                 }
             }
 
@@ -203,6 +197,10 @@ namespace finalProject
         {
             if (gameOn)
             {
+                Font drawFont = new Font("Consolas", 14, FontStyle.Bold);
+                SolidBrush drawBrush = new SolidBrush(Color.SteelBlue);
+
+                #region Screen Counter
                 switch (screenCounter)
                 {
                     case 1:
@@ -214,23 +212,23 @@ namespace finalProject
                         break;
                     case 2:
                         e.Graphics.Clear(Color.Black);
+                        e.Graphics.DrawString("Walk to the man and press SPACE", drawFont, drawBrush, 12, 600);
                         e.Graphics.DrawImage(Properties.Resources.screen2, 0, 0, 720, 590);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 417, 115, sizeNPC, sizeNPC);
                         e.Graphics.DrawImage(Properties.Resources.npcFlipped, 504, 118, sizeNPC, sizeNPC);
-                        outputLabel.Text = "Walk over to that strange man and press SPACE.";
                         break;
                     default:
                         break;
                 }
+                #endregion
 
+                e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
+
+                #region Dialogue
                 switch (dialogue)
                 {
                     case 1:
-                        outputLabel.Text = "Hagrad: You're a Wizard Harry";
-                        Thread.Sleep(2000);
-                        outputLabel.Text = "Harry: I'm a what?";
-                        Thread.Sleep(2000);
-                        outputLabel.Text = "fgfd";
+                        outputLabel.Text = "Dave the NPC: Hello there";
                         break;
                     case 2:
                         outputLabel.Text = "Dave the NPC: I have nothing to say, go away";
@@ -248,7 +246,7 @@ namespace finalProject
                         outputLabel.Text = "";
                         break;
                 }
-                e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
+                #endregion
             }
         }
     }
