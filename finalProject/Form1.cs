@@ -1,4 +1,7 @@
-﻿using System;
+﻿///Satvir Uppal
+///January 25 2016
+///Final Project
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,16 +17,25 @@ namespace finalProject
 {
     public partial class sunOnYee : Form
     {
+        #region Variable Setup
         int xHero = 500;
         int yHero = 74;
-        int speedHero = 15;
+        int speedHero = 9;
         int sizeHero = 30;
         int sizeNPC = 35;
-        int screenCounter = 2;
-        int dialogue;
+        int screenCounter = 1;
+        int dialogue = 0;
+
         Random dialogueGen = new Random();
+
         Boolean aKeyDown, sKeyDown, dKeyDown, wKeyDown, spaceDown;
         Boolean gameOn = false;
+
+        SoundPlayer theme = new SoundPlayer(Properties.Resources.gameTheme);
+
+        Font drawFont = new Font("Consolas", 14);
+        SolidBrush drawBrush = new SolidBrush(Color.SteelBlue);
+        #endregion
 
         #region room 1 walls & doors
         Rectangle cellDoor = new Rectangle(616, 585, 43, 14);
@@ -59,20 +71,26 @@ namespace finalProject
         public sunOnYee()
         {
             InitializeComponent();
+            theme.PlayLooping();   //background music
         }
 
         private void startGame_Click(object sender, EventArgs e)
         {
+            //Start Game State
             gameTimer.Start();
+            theme.Stop();
             gameOn = true;
             titleLabel.Visible = false;
             subtitleLabel.Visible = false;
             startGame.Visible = false;
             instructionsLabel.Visible = false;
+            this.BackgroundImage = null;
             this.Focus();
         }
         private void sunOnYee_KeyUp(object sender, KeyEventArgs e)
         {
+            #region Key Up
+
             switch (e.KeyCode)
             {
                 case Keys.A:
@@ -93,9 +111,11 @@ namespace finalProject
                 default:
                     break;
             }
+            #endregion
         }
         private void sunOnYee_KeyDown(object sender, KeyEventArgs e)
         {
+            #region Key Press
             switch (e.KeyCode)
             {
                 case Keys.A:
@@ -116,6 +136,7 @@ namespace finalProject
                 default:
                     break;
             }
+            #endregion
         }
 
         private void gameTimer_Tick(object sender, EventArgs e)
@@ -197,36 +218,33 @@ namespace finalProject
         {
             if (gameOn)
             {
-                Font drawFont = new Font("Consolas", 14, FontStyle.Bold);
-                SolidBrush drawBrush = new SolidBrush(Color.SteelBlue);
-
                 #region Screen Counter
                 switch (screenCounter)
                 {
                     case 1:
-                        e.Graphics.Clear(Color.Black);
                         e.Graphics.DrawImage(Properties.Resources.screen1, 0, 0, 750, 600);
                         e.Graphics.DrawImage(Properties.Resources.npcFlipped, 467, 246, sizeNPC, sizeNPC);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 500, 370, sizeNPC, sizeNPC);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 429, 500, sizeNPC, sizeNPC);
                         break;
                     case 2:
-                        e.Graphics.Clear(Color.Black);
-                        e.Graphics.DrawString("Walk to the man and press SPACE", drawFont, drawBrush, 12, 600);
+                        if (dialogue == 0)
+                        {
+                            e.Graphics.DrawString("Walk to the man and press SPACE", drawFont, drawBrush, 12, 600);
+                        }
                         e.Graphics.DrawImage(Properties.Resources.screen2, 0, 0, 720, 590);
                         e.Graphics.DrawImage(Properties.Resources.npcCharacter, 417, 115, sizeNPC, sizeNPC);
                         e.Graphics.DrawImage(Properties.Resources.npcFlipped, 504, 118, sizeNPC, sizeNPC);
                         break;
                     default:
-                        break;
+                       break;
                 }
                 #endregion
-
-                e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
 
                 #region Dialogue
                 switch (dialogue)
                 {
+
                     case 1:
                         outputLabel.Text = "Dave the NPC: Hello there";
                         break;
@@ -247,6 +265,9 @@ namespace finalProject
                         break;
                 }
                 #endregion
+
+                //Draws Character over top everything
+                e.Graphics.DrawImage(Properties.Resources.playerCharacter, xHero, yHero, sizeHero, sizeHero);
             }
         }
     }

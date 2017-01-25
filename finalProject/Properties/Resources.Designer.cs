@@ -73,9 +73,9 @@ namespace finalProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream gong {
+        internal static System.IO.UnmanagedMemoryStream gameTheme {
             get {
-                return ResourceManager.GetStream("gong", resourceCulture);
+                return ResourceManager.GetStream("gameTheme", resourceCulture);
             }
         }
         
@@ -126,15 +126,6 @@ namespace finalProject.Properties {
             get {
                 object obj = ResourceManager.GetObject("screen2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
-        /// </summary>
-        internal static System.IO.UnmanagedMemoryStream themeSong {
-            get {
-                return ResourceManager.GetStream("themeSong", resourceCulture);
             }
         }
     }
